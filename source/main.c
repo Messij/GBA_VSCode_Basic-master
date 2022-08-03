@@ -45,6 +45,21 @@ typedef signed long      s32;
 #define MODE_4           0x4
 #define MODE_5           0x5
 
+// Register
+#define REG_TM2D         *(volatile u16*) 0x4000108
+#define REG_TM2CNT       *(volatile u16*) 0x400010A
+#define REG_TM3D         *(volatile u16*) 0x400010C // timer value
+#define REG_TM3CNT       *(volatile u16*) 0x400010E // timer controle register
+
+// Timer
+#define TIMER_FREQUENCY_SYSTEM 0x0 // System clock frequency, 16.78 Mhz
+#define TIMER_FREQUENCY_64 0x1 // Every 64 clock tick , every 3.814 ms
+#define TIMER_FREQUENCY_256 0x2 // Every 256 clock tick , every  15.256 ms
+#define TIMER_FREQUENCY_1024 0x3 // Every 1024 clock tick , every  61.025 ms
+#define TIMER_OVERFLOW 0x4 // flow timer in the next when max value reach
+#define TIMER_ENABLE 0x80
+#define TIMER_IRQ_ENABLE 0x40
+
 // background
 #define BG2              0x400; // background 2
 
@@ -74,7 +89,9 @@ typedef struct tSprite
   u16 attribute2;
   u16 attribute3;
 } Sprite;
-Sprite OAMSpriteBuffer[128];
+
+#define MAX_SPRITES 128
+Sprite OAMSpriteBuffer[MAX_SPRITES]; // OAM Buffer
 
 // Drawing Functions
 void DrawPixel(int x, int y, u16);
@@ -87,44 +104,17 @@ void FlipBuffers();
 void WaitKey(int key);
 void GetInput();
 void WaitForVSync();
+void WaitForSeconds(int n);
+void TheRedDot(); // Draw a cntrolable red dot
+void CopySpriteBuffer(); // OAM Buffer
 
 // MAIN
 int main()
 {
-  	//DrawImage(arcaneData, arcanePalette);
-  	
-	int x = SCREEN_HALF_W;
-	int y = SCREEN_HALF_H;
+	WaitForVSync();
+	// CopySpriteBuffer();
 
-	// WaitKey(START);
-	// DrawHorizontalLine(SCREEN_HALF_H,GREEN);
-	// DrawVerticalLine(SCREEN_HALF_W,BLUE);
-	// DrawPixel(10, 10, RED);
-	*mode = MODE_3 | BG2;
-
-	// Boucle principale
-	while (*KEYS & START)
-	{
-		WaitForVSync();
-		if (!(*KEYS & DOWN))
-		{
-			y = y < SCREEN_DOWN ? y + 1 : SCREEN_DOWN;
-		}
-		if (!(*KEYS & UP))
-		{
-			y = y > SCREEN_UP ? y - 1 : SCREEN_UP;
-
-		}
-		if (!(*KEYS & RIGHT))
-		{
-			x = x < SCREEN_RIGHT ? x + 1 : SCREEN_RIGHT;
-		}
-		if (!(*KEYS & LEFT))
-		{
-			x = x > SCREEN_LEFT ? x - 1 : SCREEN_LEFT;
-		}
-		DrawPixel(x,y, RED);
-	}
+	TheRedDot();
 	
 	return 0;
 }
@@ -242,14 +232,58 @@ void GetInput()
 
 	}
 }
+void WaitForSeconds(int n)
+{
+	REG_TM3CNT = TIMER_FREQUENCY_1024 | TIMER_ENABLE;
+  	REG_TM3D = 0;
+	while (n--)
+	{
+		while (REG_TM3D <= 16386);
+		REG_TM3D = 0;
+	}
+}
 void WaitForVSync()
 {
   volatile u16* vreg = (volatile u16*) 0x04000004;
   while (  *vreg & (1 << 0));
   while (!(*vreg & (1 << 0)));
 }
+void TheRedDot()
+{
+	*mode = MODE_3 | BG2;
 
+	int x = SCREEN_HALF_W;
+	int y = SCREEN_HALF_H;
+	// Boucle principale
+	while (*KEYS & START)
+	{
+		WaitForVSync();
+		if (!(*KEYS & DOWN))
+		{
+			y = y < SCREEN_DOWN ? y + 1 : SCREEN_DOWN;
+		}
+		if (!(*KEYS & UP))
+		{
+			y = y > SCREEN_UP ? y - 1 : SCREEN_UP;
 
+		}
+		if (!(*KEYS & RIGHT))
+		{
+			x = x < SCREEN_RIGHT ? x + 1 : SCREEN_RIGHT;
+		}
+		if (!(*KEYS & LEFT))
+		{
+			x = x > SCREEN_LEFT ? x - 1 : SCREEN_LEFT;
+		}
+		DrawPixel(x,y, RED);
+	}
+}
+void CopySpriteBuffer()
+{
+	// REG_DMA3SAD = (u32) SpriteBuffer;
+	// REG_DMA3DAD = (u32) OAM;
+	// REG_DMA3CNT = (u32) MAX_SPRITES * 4 | DMA_16NOW;
+}
 
 
 
