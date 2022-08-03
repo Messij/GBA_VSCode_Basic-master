@@ -1,6 +1,8 @@
-typedef unsigned long    u32;
+#ifndef CONTROL_H
+#define CONTROL_H
 
-// Controls
+#include "main.h"
+
 volatile u32* KEYS = (volatile u32*) 0x04000130;
 #define A            1
 #define B            2
@@ -12,3 +14,5 @@ volatile u32* KEYS = (volatile u32*) 0x04000130;
 #define DOWN         128
 #define R            256
 #define L            512
+
+#endif

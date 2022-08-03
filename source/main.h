@@ -1,3 +1,6 @@
+#ifndef MAIN_H
+#define MAIN_H
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
@@ -64,18 +67,6 @@ u32* mode  = 	(u32*) 0x4000000;
 u16* palette = 	(u16*) 0x5000000; // 256 valeurs sur 16 bits
 u16* videoBuffer = (u16*) 0x6000000; // screen 240x160 pixel on 15 bits = 32765 colors
 
-// Sprite
-typedef struct tSprite
-{
-  u16 attribute0;
-  u16 attribute1;
-  u16 attribute2;
-  u16 attribute3;
-} Sprite;
-
-#define MAX_SPRITES 128
-Sprite OAMSpriteBuffer[MAX_SPRITES]; // OAM Buffer
-
 // Drawing Functions
 void DrawPixel(int x, int y, u16);
 void DrawVerticalLine(int x, u16 color);
@@ -90,3 +81,5 @@ void WaitForVSync();
 void WaitForSeconds(int n);
 void TheRedDot(); // Draw a cntrolable red dot
 void CopySpriteBuffer(); // OAM Buffer
+
+#endif
