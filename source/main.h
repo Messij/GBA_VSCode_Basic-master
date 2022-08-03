@@ -9,7 +9,6 @@
 typedef unsigned char    u8;
 typedef unsigned short   u16;
 typedef unsigned long    u32;
-
 typedef signed char      s8;
 typedef signed short     s16;
 typedef signed long      s32;
@@ -41,8 +40,26 @@ typedef signed long      s32;
 #define REG_DMA3CNT *(u32*) 0x40000DC // Commade Register
 #define REG_DMA3DAD *(u32*) 0x40000D8 // Data Adress Destination
 #define REG_DMA3SAD *(u32*) 0x40000D4 // Source Adress Destination
-#define DMA_32NOW DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_32 // Immediate copy 32 bits 
-#define DMA_16NOW DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_16 // Immediate copy 16 bits 
+
+#define DMA_ENABLE                    0x80000000
+#define DMA_INTERUPT_ENABLE           0x40000000
+#define DMA_TIMEING_IMMEDIATE         0x00000000
+#define DMA_TIMEING_VBLANK            0x10000000
+#define DMA_TIMEING_HBLANK            0x20000000
+#define DMA_TIMEING_SYNC_TO_DISPLAY   0x30000000
+#define DMA_16                        0x00000000
+#define DMA_32                        0x04000000
+#define DMA_REPEATE                   0x02000000
+#define DMA_SOURCE_INCREMENT          0x00000000
+#define DMA_SOURCE_DECREMENT          0x00800000
+#define DMA_SOURCE_FIXED              0x01000000
+#define DMA_DEST_INCREMENT            0x00000000
+#define DMA_DEST_DECREMENT            0x00200000
+#define DMA_DEST_FIXED                0x00400000
+#define DMA_DEST_RELOAD               0x00600000
+
+#define DMA_32NOW   DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_32 // Immediate copy 32 bits 
+#define DMA_16NOW   DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_16 // Immediate copy 16 bits 
 
 // Register
 #define REG_TM2D         *(volatile u16*) 0x4000108
@@ -61,12 +78,6 @@ typedef signed long      s32;
 
 // Background
 #define BG2              0x400; // background 2
-
-
-
-
-
-// Drawing Functions
 
 
 void WaitForVSync();
