@@ -37,13 +37,20 @@ typedef signed long      s32;
 #define videoFrontBuffer 	(u16*) 0x6000000
 #define videoBackBuffer 	(u16*) 0x600A000
 
-// mode 3
+// Screen Mode
 #define MODE_0           0x0
 #define MODE_1           0x1
 #define MODE_2           0x2
 #define MODE_3           0x3
 #define MODE_4           0x4
 #define MODE_5           0x5
+
+// DMA Direct Memory Access
+#define REG_DMA3CNT *(u32*) 0x40000DC // Commade Register
+#define REG_DMA3DAD *(u32*) 0x40000D8 // Data Adress Destination
+#define REG_DMA3SAD *(u32*) 0x40000D4 // Source Adress Destination
+#define DMA_32NOW DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_32 // Immediate copy 32 bits 
+#define DMA_16NOW DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_16 // Immediate copy 16 bits 
 
 // Register
 #define REG_TM2D         *(volatile u16*) 0x4000108
@@ -60,7 +67,7 @@ typedef signed long      s32;
 #define TIMER_ENABLE 0x80
 #define TIMER_IRQ_ENABLE 0x40
 
-// background
+// Background
 #define BG2              0x400; // background 2
 
 // Screen adresses
