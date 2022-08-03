@@ -62,24 +62,14 @@ typedef signed long      s32;
 // Background
 #define BG2              0x400; // background 2
 
-// Screen adresses
-u32* mode  = 	(u32*) 0x4000000;
-u16* palette = 	(u16*) 0x5000000; // 256 valeurs sur 16 bits
-u16* videoBuffer = (u16*) 0x6000000; // screen 240x160 pixel on 15 bits = 32765 colors
+
+
+
 
 // Drawing Functions
-void DrawPixel(int x, int y, u16);
-void DrawVerticalLine(int x, u16 color);
-void DrawHorizontalLine(int y, u16 color);
-void DrawDegraded();
-void CreatePalette();
-void DrawImage(const u16 data[], const u16 palette[]);
-void FlipBuffers();
-void WaitKey(int key);
-void GetInput();
+
+
 void WaitForVSync();
 void WaitForSeconds(int n);
-void TheRedDot(); // Draw a cntrolable red dot
-void CopySpriteBuffer(); // OAM Buffer
 
 #endif

@@ -1,9 +1,8 @@
-#ifndef CONTROL_H
-#define CONTROL_H
+#ifndef CONTROL_H_
+#define CONTROL_H_
 
 #include "main.h"
 
-volatile u32* KEYS = (volatile u32*) 0x04000130;
 #define A            1
 #define B            2
 #define SELECT       4
@@ -14,5 +13,8 @@ volatile u32* KEYS = (volatile u32*) 0x04000130;
 #define DOWN         128
 #define R            256
 #define L            512
+
+void GetInput(u32* KEYS);
+void WaitKey(int key);
 
 #endif

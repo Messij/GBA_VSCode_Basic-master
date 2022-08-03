@@ -15,4 +15,6 @@ typedef struct tSprite
 #define MAX_SPRITES 128
 Sprite OAMSpriteBuffer[MAX_SPRITES]; // OAM Buffer
 
+void CopySpriteBuffer(); // OAM Buffer
+
 #endif
