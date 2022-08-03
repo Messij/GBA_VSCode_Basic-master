@@ -1,3 +1,9 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+
+#include "color.h"
+
 // types usuels sur GBA
 typedef unsigned char    u8;
 typedef unsigned short   u16;
@@ -7,30 +13,22 @@ typedef signed char      s8;
 typedef signed short     s16;
 typedef signed long      s32;
 
-// couleur RGB
-#define RGB(r, g, b)     ((r) | (g << 5) | (b << 10)) // chaque couleur codé sur 5 bits -> 31 nuances
-#define RED 	RGB(31,0,0)
-#define GREEN 	RGB(0,31,0)
-#define BLUE	RGB(0,0,31)
-#define WHITE 	RGB(31,31,31)
-#define BLACK	RGB(0,0,0)
-
 // dimensions de l'ecran
-#define SCREEN_WIDTH     240
-#define SCREEN_HEIGHT    160
-#define SCREEN_HALF_W    SCREEN_WIDTH / 2
-#define SCREEN_HALF_H    SCREEN_HEIGHT / 2
-#define SCREEN_RIGHT	SCREEN_WIDTH - 1
-#define SCREEN_LEFT		0
-#define SCREEN_UP		0
-#define SCREEN_DOWN		SCREEN_HEIGHT - 1
+#define SCREEN_WIDTH     	240
+#define SCREEN_HEIGHT    	160
+#define SCREEN_HALF_W    	SCREEN_WIDTH / 2
+#define SCREEN_HALF_H    	SCREEN_HEIGHT / 2
+#define SCREEN_RIGHT		SCREEN_WIDTH - 1
+#define SCREEN_LEFT			0
+#define SCREEN_UP			0
+#define SCREEN_DOWN			SCREEN_HEIGHT - 1
 
 // Double buffering
 #define BACKBUFFER 			0x10
 #define videoFrontBuffer 	(u16*) 0x6000000
 #define videoBackBuffer 	(u16*) 0x600A000
 
-// Screen Mode
+// Screen Video Mode
 #define MODE_0           0x0
 #define MODE_1           0x1
 #define MODE_2           0x2
@@ -68,7 +66,7 @@ u32* mode  = 	(u32*) 0x4000000;
 u16* palette = 	(u16*) 0x5000000; // 256 valeurs sur 16 bits
 u16* videoBuffer = (u16*) 0x6000000; // screen 240x160 pixel on 15 bits = 32765 colors
 
-// touches
+// Controls
 volatile u32* KEYS = (volatile u32*) 0x04000130;
 #define A            1
 #define B            2
