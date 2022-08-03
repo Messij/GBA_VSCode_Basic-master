@@ -1,6 +1,8 @@
 #include "main.h"
 #include "Intellisense.h"
 
+#include "color.h"
+#include "control.h"
 
 // MAIN
 int main()

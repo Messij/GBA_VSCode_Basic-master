@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <math.h>
 
-#include "color.h"
-
 // types usuels sur GBA
 typedef unsigned char    u8;
 typedef unsigned short   u16;
@@ -65,19 +63,6 @@ typedef signed long      s32;
 u32* mode  = 	(u32*) 0x4000000;
 u16* palette = 	(u16*) 0x5000000; // 256 valeurs sur 16 bits
 u16* videoBuffer = (u16*) 0x6000000; // screen 240x160 pixel on 15 bits = 32765 colors
-
-// Controls
-volatile u32* KEYS = (volatile u32*) 0x04000130;
-#define A            1
-#define B            2
-#define SELECT       4
-#define START        8
-#define RIGHT        16
-#define LEFT         32
-#define UP           64
-#define DOWN         128
-#define R            256
-#define L            512
 
 // Sprite
 typedef struct tSprite
