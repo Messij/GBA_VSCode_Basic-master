@@ -99,7 +99,7 @@ void FlipBuffers()
 
 void TheRedDot()
 {
-	*mode = MODE_3 | BG2;
+	*mode = MODE_3 | BACKGROUND2_ENABLE;
 
 	int x = SCREEN_HALF_W;
 	int y = SCREEN_HALF_H;

@@ -76,8 +76,16 @@ typedef signed long      s32;
 #define TIMER_ENABLE 0x80
 #define TIMER_IRQ_ENABLE 0x40
 
+// méthode de présentation des données en mémoire du sprite
+#define SPRITE_DATA_AS_TABLE       0x0 // Table
+#define SPRITE_DATA_AS_STACK       0x40 // Pile
+
 // Background
-#define BG2              0x400; // background 2
+#define BACKGROUND0_ENABLE       0x100 // Active le Background 0
+#define BACKGROUND1_ENABLE       0x200 // Active le Background 1
+#define BACKGROUND2_ENABLE       0x400 // Active le Background 2
+#define BACKGROUND3_ENABLE       0x800 // Active le Background 3
+#define SPRITE_ENABLE       0x1000 // Active l'affichage des sprite
 
 // Screen
 #define REG_DISPCNT      *(u32*) 0x4000000 // mode ?

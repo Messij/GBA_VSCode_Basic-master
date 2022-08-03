@@ -12,7 +12,7 @@ extern u16* videoBuffer; // in draw.c
 void DrawHeightmap()
 {
   // mode 4
-  REG_DISPCNT = MODE_4 | BG2;
+  REG_DISPCNT = MODE_4 | BACKGROUND2_ENABLE;
 
   waitKey(START);
 

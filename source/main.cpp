@@ -5,15 +5,14 @@
 #include "control.h"
 #include "draw.h"
 #include "heightmap.h"
+#include "sprite.h"
 
 // MAIN
 int main() // Red dot
 {
-	WaitForVSync();
-	
-	DrawHeightmap();
-
-	TheRedDot();
+	// TheRedDot();
+	// DrawHeightmap();
+	DrawSprite();
 	
 	return 0;
 }
