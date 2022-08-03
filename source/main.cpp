@@ -10,8 +10,8 @@
 int main() // Red dot
 {
 	WaitForVSync();
-	// CopySpriteBuffer();
-	// DrawHeightmapa();
+	
+	DrawHeightmap();
 
 	TheRedDot();
 	
