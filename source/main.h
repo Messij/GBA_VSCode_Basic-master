@@ -79,6 +79,8 @@ typedef signed long      s32;
 // Background
 #define BG2              0x400; // background 2
 
+// Screen
+#define REG_DISPCNT      *(u32*) 0x4000000 // mode ?
 
 void WaitForVSync();
 void WaitForSeconds(int n);

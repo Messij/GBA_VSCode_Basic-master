@@ -4,12 +4,14 @@
 #include "color.h"
 #include "control.h"
 #include "draw.h"
+#include "heightmap.h"
 
 // MAIN
-int main()
+int main() // Red dot
 {
 	WaitForVSync();
 	// CopySpriteBuffer();
+	// DrawHeightmapa();
 
 	TheRedDot();
 	

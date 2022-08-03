@@ -14,7 +14,7 @@
 #define R            256
 #define L            512
 
-void GetInput(u32* KEYS);
+void GetInput();
 void WaitKey(int key);
 
 #endif

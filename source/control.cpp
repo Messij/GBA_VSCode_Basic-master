@@ -2,7 +2,7 @@
 
 volatile u32* KEYS = (volatile u32*) 0x04000130;
 
-void GetInput(u32* KEYS)
+void GetInput()
 {
 	if (!(*KEYS & DOWN))
 	{
