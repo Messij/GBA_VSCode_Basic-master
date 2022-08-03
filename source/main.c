@@ -66,7 +66,7 @@ typedef signed long      s32;
 // Screen adresses
 u32* mode  = 	(u32*) 0x4000000;
 u16* palette = 	(u16*) 0x5000000; // 256 valeurs sur 16 bits
-u16* videoBuffer = (u16*) 0x6000000; // screen 240x160 pixel sur 15 bits 32765 couleurs
+u16* videoBuffer = (u16*) 0x6000000; // screen 240x160 pixel on 15 bits = 32765 colors
 
 // touches
 volatile u32* KEYS = (volatile u32*) 0x04000130;
@@ -200,12 +200,12 @@ void FlipBuffers()
 	if (*mode & BACKBUFFER)
 	{
 		*mode &= ~BACKBUFFER;
-		//videoBuffer = videoBackBuffer;
+		videoBuffer = videoBackBuffer;
 	} 
 	else 
 	{
 		*mode |= BACKBUFFER;
-		//videoBuffer = videoFrontBuffer;
+		videoBuffer = videoFrontBuffer;
 	}
 }
 void WaitKey(int key)
