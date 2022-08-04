@@ -104,23 +104,23 @@ void TheRedDot()
 	int x = SCREEN_HALF_W;
 	int y = SCREEN_HALF_H;
 	// Boucle principale
-	while (*KEYS & START)
+	while (*KEYS & KEY_START)
 	{
 		WaitForVSync();
-		if (!(*KEYS & DOWN))
+		if (!(*KEYS & KEY_DOWN))
 		{
 			y = y < SCREEN_DOWN ? y + 1 : SCREEN_DOWN;
 		}
-		if (!(*KEYS & UP))
+		if (!(*KEYS & KEY_UP))
 		{
 			y = y > SCREEN_UP ? y - 1 : SCREEN_UP;
 
 		}
-		if (!(*KEYS & RIGHT))
+		if (!(*KEYS & KEY_RIGHT))
 		{
 			x = x < SCREEN_RIGHT ? x + 1 : SCREEN_RIGHT;
 		}
-		if (!(*KEYS & LEFT))
+		if (!(*KEYS & KEY_LEFT))
 		{
 			x = x > SCREEN_LEFT ? x - 1 : SCREEN_LEFT;
 		}

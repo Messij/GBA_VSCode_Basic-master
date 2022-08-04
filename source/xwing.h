@@ -1,5 +1,7 @@
-#define  xwing_WIDTH   64
-#define  xwing_HEIGHT  64
+#define  xwing_W  64 // XWing Width
+#define  xwing_H  64 // XWing Height
+#define  xwing_H_W  xwing_W / 2 // XWing Half Width
+#define  xwing_H_H  xwing_H / 2 // XWing Half Height
 
 const unsigned short xwingData[] = {
                     0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000, 0x0000,

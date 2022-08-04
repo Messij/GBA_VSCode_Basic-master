@@ -4,19 +4,19 @@ volatile u32* KEYS = (volatile u32*) 0x04000130;
 
 void GetInput()
 {
-	if (!(*KEYS & DOWN))
+	if (!(*KEYS & KEY_DOWN))
 	{
 
 	}
-	if (!(*KEYS & UP))
+	if (!(*KEYS & KEY_UP))
 	{
 
 	}
-	if (!(*KEYS & RIGHT))
+	if (!(*KEYS & KEY_RIGHT))
 	{
 
 	}
-    if (!(*KEYS & LEFT))
+    if (!(*KEYS & KEY_LEFT))
 	{
 
 	}

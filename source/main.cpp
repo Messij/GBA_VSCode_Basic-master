@@ -12,7 +12,7 @@ int main() // Red dot
 {
 	// TheRedDot();
 	// DrawHeightmap();
-	DrawSprite();
+	DrawXWingSprite();
 	
 	return 0;
 }

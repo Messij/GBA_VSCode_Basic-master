@@ -84,8 +84,10 @@ void DrawSpritesTable(); // OAM Buffer
 void InitSprites(); // Initialise Sprite out of screen
 void LoadXWingSprite();
 pSprite CreateSprite(u16 spriteID, u16 rotationID);
-void DrawSprite();
+void DrawXWingSprite();
 void GetSpriteInput();
 void MoveSprite(pSprite sprite);
+void RotateAndScaleSprite(pSprite sprite);
+void TransformSprite(pSprite sprite);
 
 #endif

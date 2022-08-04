@@ -14,7 +14,7 @@ void DrawHeightmap()
   // mode 4
   REG_DISPCNT = MODE_4 | BACKGROUND2_ENABLE;
 
-  waitKey(START);
+  waitKey(KEY_START);
 
   // initialise la palette de couleurs
   createPalette();
@@ -28,7 +28,7 @@ void DrawHeightmap()
       y = 0;
 
   // boucle principale
-  while (*KEYS & START)
+  while (*KEYS & KEY_START)
   {
     // affichage du heightmap
     displayPlasma(g, x, y);
@@ -48,14 +48,14 @@ void getInput(PGRID_2D g, int &x, int &y)
 {
   if (g->height > SCREEN_HEIGHT)
   {
-    if (!(*KEYS & DOWN))
+    if (!(*KEYS & KEY_DOWN))
     {
       y++;
       if (y > g->height)
         y = 0;
     }
     
-    if (!(*KEYS & UP))
+    if (!(*KEYS & KEY_UP))
     {
       y--;
       if (y < 0)
@@ -65,14 +65,14 @@ void getInput(PGRID_2D g, int &x, int &y)
 
   if (g->width > SCREEN_WIDTH)
   {
-    if (!(*KEYS & RIGHT))
+    if (!(*KEYS & KEY_RIGHT))
     {
       x++;
       if (x > g->width)
         x = 0;
     }
 
-    if (!(*KEYS & LEFT))
+    if (!(*KEYS & KEY_LEFT))
     {
       x--;
       if (x < 0)
