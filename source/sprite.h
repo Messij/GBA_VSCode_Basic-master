@@ -68,15 +68,12 @@ typedef struct t_RotData
   // OAMBuffer[0]
   u16 filler1[3];
   u16 corner1;
-
   // OAMBuffer[1]
   u16 filler2[3];
   u16 corner2;
-
   // OAMBuffer[2]
   u16 filler3[3];
   u16 corner3;
-
   // OAMBuffer[3]
   u16 filler4[3];
   u16 corner4;
