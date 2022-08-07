@@ -60,7 +60,7 @@ void DrawXWingSprite()
 
 	LoadXWingSprite();
 
-	while (1)
+	while (!START)
 	{
 	    WaitForVSync();
 	    DrawSpritesTable();

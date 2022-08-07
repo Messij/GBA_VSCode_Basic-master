@@ -11,5 +11,6 @@ void CreatePalette();
 void DrawImage(const u16 data[], const u16 palette[]);
 void FlipBuffers();
 void TheRedDot(); // Draw a cntrolable red dot
+void FadeOut();
 
 #endif

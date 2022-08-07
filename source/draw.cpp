@@ -127,3 +127,25 @@ void TheRedDot()
 		DrawPixel(x,y, RED);
 	}
 }
+
+void FadeOut()
+{
+  u16 r, g, b;
+
+  for (int i = 0; i < 32; i++)
+  {
+    for (int j = 0; j < 256; j++)
+    {
+      r = (palette[j]) & 0x1F;
+      g = (palette[j] >> 5) & 0x1F;
+      b = (palette[j] >> 10) & 0x1F;
+
+      if (r > 0) r--;
+      if (g > 0) g--;
+      if (b > 0) b--;
+
+      palette[j] = RGB(r, g, b);
+    }
+    WaitTime(0, 2000 / 32); // Don't work (wait)
+  }
+}

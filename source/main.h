@@ -62,10 +62,10 @@ typedef signed long      s32;
 #define DMA_16NOW   DMA_ENABLE | DMA_TIMEING_IMMEDIATE | DMA_16 // Immediate copy 16 bits 
 
 // Register
-#define REG_TM2D         *(volatile u16*) 0x4000108
-#define REG_TM2CNT       *(volatile u16*) 0x400010A
-#define REG_TM3D         *(volatile u16*) 0x400010C // timer value
-#define REG_TM3CNT       *(volatile u16*) 0x400010E // timer controle register
+#define REG_TM2D         *(u16*) 0x4000108 // timer value
+#define REG_TM2CNT       *(u16*) 0x400010A // timer control register
+#define REG_TM3D         *(u16*) 0x400010C // timer value
+#define REG_TM3CNT       *(u16*) 0x400010E // timer control register
 
 // Timer
 #define TIMER_FREQUENCY_SYSTEM 0x0 // System clock frequency, 16.78 Mhz
@@ -92,5 +92,6 @@ typedef signed long      s32;
 
 void WaitForVSync();
 void WaitForSeconds(int n);
+void WaitTime(int seconds, int milliSeconds);
 
 #endif
