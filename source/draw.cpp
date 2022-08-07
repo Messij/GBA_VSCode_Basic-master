@@ -149,3 +149,31 @@ void FadeOut()
     WaitTime(0, 2000 / 32); // Don't work (wait)
   }
 }
+
+void FadeIn(const u16 picture[], const u16 pictpal[])
+{
+  for (int i = 0; i < 256; i++)
+    palette[i] = 0;
+
+  REG_DMA3SAD = (u32) picture;
+  REG_DMA3DAD = (u32) videoBuffer;
+  REG_DMA3CNT = SCREEN_HEIGHT * SCREEN_WIDTH / 2 | DMA_16NOW;
+
+  u16 r, g, b;
+  for (int i = 0; i < 32; i++)
+  {
+    for (int j = 0; j < 256; j++)
+    {
+      r = (palette[j]) & 0x1F;
+      g = (palette[j] >> 5 ) & 0x1F;
+      b = (palette[j] >> 10) & 0x1F;
+
+      if (r < ((pictpal[j]) & 0x1F)) r++;
+      if (g < ((pictpal[j] >> 5 ) & 0x1F)) g++;
+      if (b < ((pictpal[j] >> 10) & 0x1F)) b++;
+
+      palette[j] = RGB(r, g, b);
+    }
+    WaitTime(0, 2000 / 32);  // Don't work (wait)
+  }
+}

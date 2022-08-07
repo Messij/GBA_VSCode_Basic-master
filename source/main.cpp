@@ -12,7 +12,8 @@ int main() // Red dot
 {
 	// TheRedDot();
 	// DrawHeightmap();
-	DrawXWingSprite();
+	
+  DrawXWingSprite();
 	
 	return 0;
 }
@@ -34,7 +35,6 @@ void WaitForVSync()
   while (  *vreg & (1 << 0));
   while (!(*vreg & (1 << 0)));
 }
-
 void WaitTime(int seconds, int milliSeconds)
 {
   REG_TM2CNT = TIMER_FREQUENCY_256 | TIMER_ENABLE; // Initialisation son't work. Why ???
